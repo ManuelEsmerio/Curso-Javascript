@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final Javascript</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-title text-center m-2">Datos del Cliente</h5>
+                    <form action="" class="p-4">
+                        <div class="mb-3">
+                            <label for="txtName">Nombre completo:</label>
+                            <input type="text" class="form-control" name="txtName" id="txtName"
+                                placeholder="Nombre completo:">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtAddress">Dirección de envio:</label>
+                            <input type="text" class="form-control" name="txtAddress" id="txtAddress"
+                                placeholder="Dirección de envio:">
+                        </div>
+                    </form>
+                    <div class="card-footer">
+                        <!-- <button class="btn btn-primary">Guardar Venta</button> -->
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-striped table-dark table-hover">
+                        <thead>
+                            <th>N°</th>
+                            <th>Producto</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>#</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Xtreme Pc Gamer GeForce RTX 2060 Ultra I7 16GB SSD 512GB RGB</td>
+                                <td>IIntel I7 9700F con 8 núcleos y 8 hilos 3.0 GHz de velocidad y 4.7 velocidad turbo con 12 MB L3 en Cache, convirtiendo tu PC en una máquina para derrotar a tus oponentes.</td>
+                                <td>$33,899.00</td>
+                                <td>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-warning">modificar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Xtreme Pc Gamer GeForce RTX 2060 Ultra I7 16GB SSD 512GB RGB</td>
+                                <td>IIntel I7 9700F con 8 núcleos y 8 hilos 3.0 GHz de velocidad y 4.7 velocidad turbo con 12 MB L3 en Cache, convirtiendo tu PC en una máquina para derrotar a tus oponentes.</td>
+                                <td>$33,899.00</td>
+                                <td>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-warning">modificar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Xtreme Pc Gamer GeForce RTX 2060 Ultra I7 16GB SSD 512GB RGB</td>
+                                <td>IIntel I7 9700F con 8 núcleos y 8 hilos 3.0 GHz de velocidad y 4.7 velocidad turbo con 12 MB L3 en Cache, convirtiendo tu PC en una máquina para derrotar a tus oponentes.</td>
+                                <td>$33,899.00</td>
+                                <td>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-warning">modificar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Productos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-dark table-hover">
+                            <thead>
+                                <th>N°</th>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>#</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Xtreme Pc Gamer GeForce RTX 2060 Ultra I7 16GB SSD 512GB RGB</td>
+                                    <td>IIntel I7 9700F con 8 núcleos y 8 hilos 3.0 GHz de velocidad y 4.7 velocidad turbo con 12 MB L3 en Cache, convirtiendo tu PC en una máquina para derrotar a tus oponentes.</td>
+                                    <td>$33,899.00</td>
+                                    <td>
+                                        <button class="btn btn-success">Agregar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Xtreme Pc Gamer GeForce RTX 2060 Ultra I7 16GB SSD 512GB RGB</td>
+                                    <td>IIntel I7 9700F con 8 núcleos y 8 hilos 3.0 GHz de velocidad y 4.7 velocidad turbo con 12 MB L3 en Cache, convirtiendo tu PC en una máquina para derrotar a tus oponentes.</td>
+                                    <td>$33,899.00</td>
+                                    <td>
+                                        <button class="btn btn-success">Agregar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Xtreme Pc Gamer GeForce RTX 2060 Ultra I7 16GB SSD 512GB RGB</td>
+                                    <td>IIntel I7 9700F con 8 núcleos y 8 hilos 3.0 GHz de velocidad y 4.7 velocidad turbo con 12 MB L3 en Cache, convirtiendo tu PC en una máquina para derrotar a tus oponentes.</td>
+                                    <td>$33,899.00</td>
+                                    <td>
+                                        <button class="btn btn-success">Agregar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+
+</html>
