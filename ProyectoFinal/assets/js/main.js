@@ -1,81 +1,88 @@
-import Operation from './Operation.js'
+const month = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
 
-let isNotComplete = true;
-let listProducts = [];
-let operation = new Operation();
-let percentage = 10;
+console.log(month[0]);
 
-// Create our number formatter.
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-});
+const formOrder = document.querySelector("#formOrder");
 
-alert(`         ******      BIENVENIDO AL PUNTO DE VENTA (MEG)      ******
-    Este sistema te permite agregar la cantidad, el producto y el precio del mismo. Al terminar te mostrara el total de productos y total a pagar.
-`);
+formOrder.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(document.forms.formOrder);
 
-while (isNotComplete) {
-    let product  = prompt(`Introduce el producto a comprar:`);
-    let quantity = parseInt(prompt(`Introduzca la cantidad a comprar del producto ${product}:`));
-    let price    = parseFloat(prompt(`Introduzca el precio unitario (con IVA) del producto ${product}`));
+    let tbody = document.querySelector("#listOrders tbody");
     
-    let total = operation.multiplication(parseFloat(price), parseInt(quantity));
+    for (let i = 0; i <= 0; i++) {
+        let row = tbody.insertRow(i);
+        row.insertCell(0).innerHTML = 1;
+        row.insertCell(1).innerHTML = formData.get('txtName');
+        row.insertCell(2).innerHTML = formData.get('txtPhone');
+        row.insertCell(3).innerHTML = formData.get('txtAmount');
+        row.insertCell(4).innerHTML = getStringDate();
+        let groupButton = row.insertCell(5);
 
-    // JSON
-    let objectProduct = {
-        product,
-        quantity,
-        price,
-        total
+        let viewButton = document.createElement('button');
+        viewButton.classList.add('btn', 'btn-primary', 'btn-xs', 'm-1');
+        let iconView = document.createElement("i");
+        iconView.classList.add('bi','bi-eye-fill');
+        viewButton.appendChild(iconView);
+
+        let updateButton = document.createElement('button');
+        updateButton.classList.add('btn', 'btn-warning', 'btn-xs','m-1');
+        let iconUpdate = document.createElement("i");
+        iconUpdate.classList.add('bi','bi-pencil-fill');
+        updateButton.appendChild(iconUpdate);
+
+        let deleteButton = document.createElement('button');
+        deleteButton.classList.add('btn', 'btn-danger', 'btn-xs', 'm-1');
+        let iconDelete = document.createElement("i");
+        iconDelete.classList.add('bi','bi-trash');
+        deleteButton.appendChild(iconDelete);
+
+        groupButton.appendChild(viewButton);
+        groupButton.appendChild(updateButton);
+        groupButton.appendChild(deleteButton);
+
+        clear();
     }
+    
+} );
 
-    listProducts.push(objectProduct);
 
-    isNotComplete = confirm(`¿Desea agregar un nuevo producto?`);
+const handledCalculateAmount = () => {
+    let price    = (isNaN(parseFloat(document.querySelector("#txtPrice").value))) ? 0.00 : parseFloat(document.querySelector("#txtPrice").value);
+    let quantity = (isNaN(parseInt(document.querySelector("#txtQuantity").value))) ? 0 : parseInt(document.querySelector("#txtQuantity").value);
+    let valueAmount = multiplication(price,quantity);
+    document.querySelector("#txtAmount").value = valueAmount;
 }
 
-//  Obtener total de productos y total a pagar 
-let { quantity } = listProducts.reduce((a, b) => ({ quantity: a.quantity + b.quantity }));
-let { total } = listProducts.reduce((a, b) => ({ total: a.total + b.total }));
-let subtotal = operation.getIVA(total);
-let iva = operation.subtraction(total, subtotal);
-let discount = operation.getDiscount(subtotal, percentage);
 
-total = (operation.subtraction(subtotal, discount)) + iva;
 
-console.log(`  
-***********  Ticket  ***********   
-${listProducts.map(item => {
-    return `
-    ************************************
-    Producto: ${item.product}
-    Cantidad: ${item.quantity}
-    Precio: ${formatter.format(item.price)}
-    Total: ${formatter.format(item.total)}
-    *************************************`
-}).join("")}
+// Algorithmic function //
+const multiplication = (a,b) => a * b;
 
-Subtotal: ${formatter.format(subtotal)}
-Descuento: ${formatter.format(discount)}    %Descuento : ${percentage}
-IVA: ${formatter.format(iva)}
-Total: ${formatter.format(total)}     Total de Productos: ${quantity}   
-`)
+const getStringDate = () =>{
+    let date = new Date();
+    return `${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} `;
+}
 
-alert(`  
-***********  Ticket  ***********   
-${listProducts.map(item => {
-    return `
-    ************************************
-    Producto: ${item.product}
-    Cantidad: ${item.quantity}
-    Precio: ${formatter.format(item.price)}
-    Total: ${formatter.format(item.total)}
-    *************************************`
-}).join("")}
-
-Subtotal: ${formatter.format(subtotal)}
-Descuento: ${formatter.format(discount)}  %Descuento : ${percentage}
-IVA: ${formatter.format(iva)}
-Total: ${formatter.format(total)}     Total de Productos: ${quantity}   
-`);
+const clear = () => {
+    document.querySelector("#txtName").value = "";
+    document.querySelector("#txtPhone").value = "";
+    document.querySelector("#txtAddress").value = "";
+    document.querySelector("#txtQuantity").value = "0";
+    document.querySelector("#txtProduct").value = "";
+    document.querySelector("#txtPrice").value = "0.00";
+    document.querySelector("#txtAmount").value = "0.00";
+}
