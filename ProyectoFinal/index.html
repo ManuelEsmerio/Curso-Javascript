@@ -22,26 +22,74 @@
                     <h3 class="card-title text-center m-2">Order</h3>
                     <form class="p-4" id="formOrder">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="mb-3">
-                                    <label for="txtName">Customer:</label>
+                                    <label for="txtName">Name:</label>
                                     <input type="text" class="form-control" name="txtName" id="txtName"
                                         placeholder="Customer">
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="mb-3">
+                                    <label for="txtLastname">Lastname:</label>
+                                    <input type="text" class="form-control" name="txtLastname" id="txtLastname"
+                                        placeholder="Lastname">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="mb-3">
+                                    <label for="txtCompany">Company:</label>
+                                    <input type="text" class="form-control" name="txtCompany" id="txtCompany"
+                                        placeholder="Company">
+                                </div>
+                            </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="mb-3">
-                                    <label for="txtPhone">Phone</label>
+                                    <label for="txtPhone">Phone:</label>
                                     <input type="number" class="form-control" name="txtPhone" id="txtPhone"
                                         placeholder="Phone Number">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="mb-3">
+                                    <label for="txtEmail">Email:</label>
+                                    <input type="text" class="form-control" name="txtEmail" id="txtEmail"
+                                        placeholder="Email">
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="txtAddress">Address</label>
-                            <textarea name="txtAddress" id="txtAddress" cols="30" rows="5" class="form-control"
-                                placeholder="Enter your Address"></textarea>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="mb-3">
+                                        <label for="txtStreet">Street:</label>
+                                        <input type="text" class="form-control" name="txtStreet" id="txtStreet"
+                                            placeholder="Street">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="mb-3">
+                                        <label for="txtTown">Town:</label>
+                                        <input type="text" class="form-control" name="txtTown" id="txtTown"
+                                            placeholder="Town">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="mb-3">
+                                        <label for="txtZipcode">Zipcode:</label>
+                                        <input type="number" class="form-control" name="txtZipcode" id="txtZipcode"
+                                            placeholder="ZipCode">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="mb-3">
+                                        <label for="txtCountry">Country:</label>
+                                        <input type="text" class="form-control" name="txtCountry" id="txtCountry"
+                                            placeholder="Street">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <hr>
@@ -85,29 +133,58 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-6">
                 <div class="table-responsive">
                     <table class="table table-striped table-dark table-hover" id="listOrders">
                         <thead>
                             <th>N°</th>
-                            <th>customer</th>
-                            <th>phone</th>
-                            <th>amount</th>
                             <th>date</th>
+                            <th>product</th>
+                            <th>quantity</th>
+                            <th>price</th>
+                            <th>amount</th>
                             <th>#</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                     </table>
+
+                    <caption>
+                        <p>Total Products: <span id="spanTotalProducts"></span></p>
+                        <p class="toPay">Total to Pay: <span id="spanTotalToPay"></span></p>
+                    </caption>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./assets/js/operation.js"></script>
+    <script src="./assets/js/event.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 

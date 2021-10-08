@@ -1,9 +1,19 @@
-export default class Operation{
-    multiplication (num1, num2) {return parseFloat(num1 * num2)};
-    subtraction (num1, num2) {return parseFloat(num1 - num2)};
-    sum (num1, num2) {return parseFloat(num1 + num2)};
+// Algorithmic function //
+const multiplication = (a, b) => a * b;
 
-    getIVA (num) { return Math.round(parseFloat(num / 1.16)) };
-    getDiscount(num, discount = 0) { return Math.round(parseFloat(num * (discount / 100)))};
-    
+const getStringDate = () => {
+    let date = new Date();
+    return `${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} `;
+}
+
+const calculateTotals = () => {
+    document.querySelector("#spanTotalProducts").innerHTML = products.reduce((a,b) => parseInt(a) + parseInt(b.quantity), 0);
+    document.querySelector("#spanTotalToPay").innerHTML = numberFormat2.format(products.reduce((a,b) => parseInt(a) + parseInt(b.amount), 0));
+}
+
+const clearProduct = () => {
+    document.querySelector("#txtQuantity").value = "1";
+    document.querySelector("#txtProduct").value = "";
+    document.querySelector("#txtPrice").value = "0.00";
+    document.querySelector("#txtAmount").value = "0.00";
 }
