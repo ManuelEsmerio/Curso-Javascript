@@ -15,6 +15,7 @@ const month = [
 
 const numberFormat2 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
+const customer = []
 const products = []
 
 const formOrder = document.querySelector("#formOrder");
@@ -36,7 +37,7 @@ formOrder.addEventListener("submit", (e) => {
             }
 
             products.push(objectProduct);
-           
+
             let tbody = document.querySelector("#listOrders tbody");
             tbody.innerHTML = "";
 
@@ -75,7 +76,7 @@ formOrder.addEventListener("submit", (e) => {
 
                 groupButton.appendChild(viewButton);
                 groupButton.appendChild(updateButton);
-                groupButton.appendChild(deleteButton);                
+                groupButton.appendChild(deleteButton);
             })
 
             clearProduct();
@@ -90,4 +91,79 @@ formOrder.addEventListener("submit", (e) => {
 
 });
 
+
+// Eventos //
+const handledCalculateAmount = () => {
+    let price = (isNaN(parseFloat(document.querySelector("#txtPrice").value))) ? 0.00 : parseFloat(document.querySelector("#txtPrice").value);
+    let quantity = (isNaN(parseInt(document.querySelector("#txtQuantity").value))) ? 0 : parseInt(document.querySelector("#txtQuantity").value);
+    let valueAmount = multiplication(price, quantity);
+    document.querySelector("#txtAmount").value = valueAmount;
+}
+
+const handledView = (rowProduct) => {
+    let { quantity, product, id, price, amount } = rowProduct;
+    $("#txtQuantityView").val(quantity);
+    $("#txtProductView").val(product);
+    $("#txtPriceView").val(price);
+    $("#txtAmountView").val(amount);
+}
+
+const handledUpdate = (rowProduct, index) => {
+    let { quantity, product, price, amount } = rowProduct;
+    $("#txtQuantity").val(quantity);
+    $("#txtProduct").val(product);
+    $("#txtPrice").val(price);
+    $("#txtAmount").val(amount);
+
+    products.splice(index, 1);
+    loadTable();
+}
+
+const handledDelete = (id) => {
+    swal({
+        title: "Are you sure that you want to remove the product?",
+        text: "This process is irreversible",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                products.splice(id, 1);
+                loadTable();
+            }
+        });
+}
+
+
+$("#btnGenerateOrder").click(function () {
+    if (products.length > 0) {
+        listCustomer = {
+            name: $("#txtName").val(),
+            lastname: $("#txtLastname").val(),
+            company: $("#txtCompany").val(),
+            phone: $("#txtPhone").val(),
+            email: $("#txtEmail").val(),
+            street: $("#txtStreet").val(),
+            town: $("#txtTown").val(),
+            zipcode: $("#txtZipcode").val(),
+            contry: $("#txtCountry").val()
+        }
+
+        customer.push(listCustomer);
+
+        swal({
+            title: "Are you sure that you want to generate you order?",
+            text: "This process is irreversible",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                swal("Information", "In construction", "info");
+            });
+    } else {
+        swal("Warning", "You need to add at least one product", "warning");
+    }
+});
 
